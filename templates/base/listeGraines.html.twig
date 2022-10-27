@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Liste des graines{% endblock %}
+
+{% block body %}
+{{ parent() }}
+<h3 class="text-center text-primary mt-4 pt-4 display-3 fw-bold">Liste des graines</h3>
+
+<div class="container p-4">
+    <div class="row">
+        {% for graine in graines %}
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><b>{{ graine.nom | upper }}</b></h5>
+                        <h6 class="card-text">Début de plantation: {{ graine.periodePlantation | date("d-m-Y ")}}</h6>
+                        <h6 class="card-text">Début de la récolte: {{ graine.periodeRecolte | date("d-m-Y ")}}</h6>
+                        <h6 class="card-text">En stock: {{ graine.quantite }} graines</h6>
+                        <p class="card-text">{{ graine.conseils }}</p>
+                        <a href="{{path('app_liste-graines', {'id':graine.id})}}">Supprimer la graine</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>      
+</div>
+
+{% endblock %}

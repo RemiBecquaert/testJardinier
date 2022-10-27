@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Ajouter une famille{% endblock %}
+
+{% block body %}
+{{ parent() }}
+<h3 class="text-center text-primary mt-4 pt-4 display-3 fw-bold">Ajouter une famille de graine</h3>
+
+<div class="container p-4">
+    {{form_start(form)}}
+        
+        {{form_label(form.libelle, 'La famille de graine', {'label_attr':{'class':'fw-bold text-dark'}})}}
+        {{form_widget(form.libelle, {'attr':{'class':'form-control', 'placeholder':'Le nom de la famille à ajouter'}})}}
+
+        {{form_widget(form.envoyer, {'label':"Ajouter", 'attr':{'class':'btn bg-primary text-light justify-content-center'}})}}
+    {{form_end(form, {render_rest: true})}} 
+</div>
+
+{% endblock %}
